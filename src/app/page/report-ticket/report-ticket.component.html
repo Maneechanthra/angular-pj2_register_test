@@ -1,0 +1,222 @@
+<body>
+  <div class="con">
+    <aside>
+      <div class="top">
+        <div class="logo">
+          <img src="../../../assets/img/03.png" />
+          <h1>Lottory</h1>
+        </div>
+        <div class="close" id="close-btn">
+          <span class="material-symbols-outlined"> close </span>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <!-- <a href="#">
+                    <span class="material-symbols-outlined">
+                        person
+                    </span>
+                  <h3>Dashboard</h3>
+              </a> -->
+        <a routerLink="/dashboard">
+          <!-- <span class="material-symbols-outlined">grid_view</span> -->
+          <h3>หน้าแรก</h3>
+        </a>
+        <a routerLink="/report_user">
+          <!-- <span class="material-symbols-outlined">grid_view</span> -->
+          <h3>รายงานจำนวนผู้ใช้งาน</h3>
+        </a>
+        <a routerLink="/report_ticket" class="active">
+          <!-- <span class="material-symbols-outlined">grid_view</span> -->
+          <h3>รายงานจำนวนสลาก</h3>
+        </a>
+        <a routerLink="/report_buyticket">
+          <!-- <span class="material-symbols-outlined">grid_view</span> -->
+          <h3>รายงานรายละเอียดการสั่งซื้อ</h3>
+        </a>
+        <a href="/login">
+          <!-- <span class="material-symbols-outlined"> logout </span> -->
+          <h3>Logout</h3>
+        </a>
+      </div>
+    </aside>
+    <!----------------------------------- END OF ASIDE -------------------------->
+
+    <main>
+      <h1>รายงานจำนวนสลาก</h1>
+      <div class="date">
+        <p>รายงานจำนวนสลาก</p>
+      </div>
+      <div class="insights">
+        <div class="circle_1">
+          <span></span>
+          <div class="middle">
+            <div class="left">
+              <h3>จำนวนผู้ใช้งาน</h3>
+              <h1>{{ account.length }} คน</h1>
+            </div>
+            <!-- <div class="progress1">
+                          <svg>
+                              <circle cx='38' cy='38' r='36'></circle>
+                          </svg>
+                          <div class="number">
+                              <p>81%</p>
+                          </div>
+                      </div> -->
+          </div>
+        </div>
+        <div class="circle_2">
+          <span></span>
+          <div class="middle">
+            <div class="left">
+              <h3>จำนวนสลากทั้งหมด</h3>
+              <h1>{{lottory_total.length}} ใบ</h1>
+            </div>
+            <!-- <div class="progress1">
+                          <svg>
+                              <circle cx='38' cy='38' r='36'></circle>
+                          </svg>
+                          <div class="number">
+                              <p>81%</p>
+                          </div>
+                      </div> -->
+          </div>
+        </div>
+
+        <div class="circle_3">
+          <span></span>
+          <div class="middle">
+            <div class="left">
+              <h3>จำนวนการสั่งซื้อทั้งหมด</h3>
+              <h1>{{totalBuytciket.length}} รายการ</h1>
+            </div>
+            <!-- <div class="progress1">
+                          <svg>
+                              <circle cx='38' cy='38' r='36'></circle>
+                          </svg>
+                          <div class="number">
+                              <p>81%</p>
+                          </div>
+                      </div> -->
+          </div>
+        </div>
+        <!-------------------------- END OF INCOME -------------------------->
+      </div>
+
+      <!-------------------------- ORDER -------------------------->
+      <div class="recent-orders">
+        <h2>การจัดการสลากินแบ่ง</h2>
+        <button class="btnadd" (click)="openDialog()">เพิ่ม</button>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">ลำดับ</th>
+              <th scope="col">เลขสลาก</th>
+              <th scope="col">งวดที่</th>
+              <th scope="col">ชุดที่</th>
+              <th scope="col">ราคา</th>
+              <th scope="col">จำนวน</th>
+              <th scope="col">งวดประจำวันที่</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let lottory of filteredLottory">
+              <td data-label="Account">{{lottory.lot_id}}</td>
+              <td data-label="Due Date">{{lottory.ticket_id}}</td>
+              <td data-label="Amount">{{lottory.round_no}}</td>
+              <td data-label="Period">{{lottory.set_no}}</td>
+              <td data-label="Period">{{lottory.price}}</td>
+              <td data-label="Period">{{lottory.amount}}</td>
+              <td data-label="Period">{{lottory.date_lot}}</td>
+              <td data-label="Account">
+                <button class="btn btn-primary"
+                  style="padding: 5px; width: 100px;"
+                  (click)="openDialog_edit(lottory.lot_id , lottory.ticket_id, lottory.round_no ,lottory.set_no, lottory.price, lottory.amount, lottory.date_lot)">แก้ไข</button>
+              </td>
+              <td data-label="Account"><button class="btn btn-danger"
+                  style="padding: 5px; margin-left: 5px; width: 100px;" (click)="removelottory(lottory.lot_id)">ลบ</button></td>
+              <!-- <td data-label="Period">{{lottory.date_lot}}</td> -->
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="pagination">
+          <button class="btn btn-primary" (click)="prevPage()">Previous</button>
+          <button class="btn btn-primary" (click)="nextPage()">Next</button>
+        </div>
+
+        <!-- <div class="pagination">
+          <button
+            *ngFor="let page of getPages()"
+            [class.active]="page === currentPage"
+            (click)="onPageChange(page)">
+            {{ page }}
+          </button>
+        </div> -->
+
+        <div>
+          <a href="#">Show All</a>
+        </div>
+      </div>
+    </main>
+
+    <!-------------------------- END OF MAIN -------------------------->
+
+    <div class="right">
+      <div class="top">
+        <button id="menu-btn">
+          <span class="material-symbols-outlined"> menu </span>
+        </button>
+        <div class="profile">
+          <div class="info">
+            <p>Hey, <b>{{ userData.fname }} {{ userData.lname }}</b></p>
+            <small class="text-muted">Admin</small>
+          </div>
+          <!-- <div class="profile-photo">
+                      <span class="material-symbols-outlined">
+                          person
+                      </span>
+                  </div> -->
+        </div>
+      </div>
+
+      <!-------------------------- END OF TOP -------------------------->
+
+      <!-- <div class="recent-updates">
+        <h2>Recent Updates</h2>
+        <div class="updates">
+          <div class="update">
+            <span class="material-symbols-outlined"> person </span>
+            <div class="message">
+              <p>
+                <b>Mike Tyson</b> receivaed his order of Night lion tect GPS
+                drone.
+              </p>
+              <small class="text-muted">2 Minutes Ago</small>
+            </div>
+          </div>
+          <div class="update">
+            <span class="material-symbols-outlined"> person </span>
+            <div class="message">
+              <p>
+                <b>Mike Tyson</b> receivaed his order of Night lion tect GPS
+                drone.
+              </p>
+              <small class="text-muted">2 Minutes Ago</small>
+            </div>
+          </div>
+          <div class="update">
+            <span class="material-symbols-outlined"> person </span>
+            <div class="message">
+              <p>
+                <b>Mike Tyson</b> receivaed his order of Night lion tect GPS
+                drone.
+              </p>
+              <small class="text-muted">2 Minutes Ago</small>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</body>

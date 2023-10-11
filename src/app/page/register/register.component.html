@@ -1,0 +1,30 @@
+<div class="align-content-between">
+  <div style="margin-top: 20px;">
+    <div class="content">
+      <div style="padding: 20px;">
+        <div>
+          
+          <h4><i class="pi pi-user-plus" style="margin-right: 5px; font-size: 2rem; padding-right: 5px;"></i>สมัครสมาชิก</h4>
+        </div>
+            <div class="register">
+              <div class="form_1">
+                <input type="text" name="fname" id="fname" placeholder="ชื่อ" class="form-control" [(ngModel)]="fname" required="">
+                <input style="margin-left: 10px;" type="text" name="lname" id="lname" placeholder="นามสกุล" class="form-control" [(ngModel)]="lname">
+              </div>
+              <div class="form_2">
+                <input type="date" name="bdate" id="bdate" [(ngModel)]="bdate" class="form-control">
+              </div>
+              <div class="form_3">
+                <input type="text" name="email" id="email" placeholder="อีเมล" class="form-control" [(ngModel)]="email">
+                <input style="margin-left: 10px;"  type="password" name="password" id="password" placeholder="รหัสผ่าน" class="form-control" [(ngModel)]="password">
+              </div>
+              <div class="form_3"
+                style="display: flex; justify-content: space-between; margin-top: 20px;">
+                  <input type="text" name="tel_number" id="tel_number" placeholder="หมายเลขโทรศัพท์" class="form-control" [(ngModel)]="tel_number">
+                </div>
+              <button class="btn btn-primary button_css"(click)="save()">บันทึกข้อมูล</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

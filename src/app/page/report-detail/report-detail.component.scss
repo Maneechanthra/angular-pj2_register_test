@@ -1,0 +1,262 @@
+// .font {
+//   font-family: 'Prompt', sans-serif;
+// }
+// .parent {
+//   align-items: center;
+//   width: 60%;
+//   display: grid;
+//   grid-template-columns: repeat(3, 1.5fr);
+//   grid-template-rows: repeat(2, 1fr);
+//   grid-column-gap: 10px;
+//   grid-row-gap: 10px;
+//   }
+
+*{
+    font-family: 'Prompt', sans-serif;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    height: 40px; /* กำหนดความสูงเท่ากันสำหรับ th และ td */
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  thead tr {
+    height: 50px; /* กำหนดความสูงของแถวหัว */
+  }
+  table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    margin-top: 10px;
+    table-layout: fixed;
+  }
+
+  table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+
+  table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
+  }
+
+  table th,
+  table td {
+    padding: .625em;
+    text-align: center;
+  }
+
+  table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .input_num_search_1 {
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 2px;
+    width: 60px;
+    height: 80px;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 7px;
+  }
+
+  .input_num_search {
+    margin-left: 10px;
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 2px;
+    width: 60px;
+    height: 80px;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 7px;
+  }
+  .btn_reset{
+    background-color: #6a9b00;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    width: 100%;;
+    color: white;
+  }
+  .btn_search{
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    width: 100%;;
+    color: white;
+    background-color: #051937;
+  }
+  .box-input{
+    display: flex;
+    gap: 10px;
+  }
+  .box-input-text{
+    display: flex;
+    align-items: center;
+  }
+  .box-input-1{
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    flex: 33.33%;
+  }
+  .box-input-2{
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    flex: 33.33%;
+  }
+  .box-input-3{
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    flex: 33.33%;
+  }
+  .box-input-a{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 33.33% auto auto;
+    margin-top: 10px;
+  }
+  .box-input-b{
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .box-input-3{
+    flex: 70%;
+  }
+  .box-input-4{
+    flex: 30%;
+  }
+  .input-1{
+    display: flex;
+  }
+  select{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 5px;
+  }
+  .box-4{
+    display: grid;
+    gap: 2px;
+    grid-template-columns: 40% 20% 20% 20%;
+    align-items: center;
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+  .box-2{
+    display: flex;
+    justify-content: space-between;
+  }
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+    }
+
+    table caption {
+      font-size: 1.3em;
+    }
+
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+
+    table td::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }
+
+
+
+
+  /* general styling */
+  body {
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.25;
+  }
+
+  @media screen and (max-width: 1000px) {
+    .box-input-a{
+      display: block;
+
+    }
+    .box-input-b{
+      margin-top: 10px;
+    }
+    .box-input{
+      display: block;
+    }
+    .box-input-1{
+  width: 100%;
+    }
+    select{
+      width: 100%;
+    }
+    .btn_reset {
+      width: 100%;
+      margin-top: 5px;
+    }
+    .btn_search {
+      width: 100%;
+    }
+    .input_num_search_1,
+    .input_num_search {
+      width: 100%;
+      height: 60px;
+      font-size: 30px;
+    }
+    .input-1{
+      justify-content: center;
+      align-items: center;
+    }
+  }
+.card-content{
+  background-color: white;
+}

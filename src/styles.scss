@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: var(--font-family);
+
+  // background-image: url("../src/assets/img/bg_02.png");
+  background: rgb(225,225,225);
+  background: linear-gradient(90deg, rgba(225,225,225,1) 0%, rgba(243,243,243,1) 100%);
+}

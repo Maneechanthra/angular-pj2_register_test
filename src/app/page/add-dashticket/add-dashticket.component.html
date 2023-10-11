@@ -1,0 +1,29 @@
+<div class="box-content">
+  <div class="text-top">
+    <p>เพิ่มข้อมูลสลากกินแบ่งรัฐบาล</p>
+  </div>
+  <form>
+    <label>เลขสลาก</label>
+    <input type="text" placeholder="หมายเลขสลาก" #ticket_id >
+    <div class="box-two">
+      <div class="box">
+        <label>ชุดที่ : </label>
+        <input type="text" placeholder="ชุดที่" #set_no>
+      </div>
+      <div class="box">
+        <label>งวดประจำวันที่ : </label>
+        <input type="date" #date_lot>
+      </div>
+    </div>
+    <label>งวดที่ : </label>
+    <input type="text" placeholder="งวดที่" #round_no>
+    <label>ราคา : </label>
+    <input type="text" placeholder="ราคาสลาก" #price>
+    <label>จำนวน : </label>
+    <input type="number" placeholder="จำนวนสลาก" #amount>
+    <div style="width: 100%; display: flex; flex-direction: column; justify-content: center;">
+      <button style="width: 100%;"(click)="addlottory(ticket_id.value, set_no.value, date_lot.value, round_no.value, price.value, amount.value)">บันทึกข้อมูล</button>
+      <button style="width: 100%; background-color: red;" (click)="closeDialog()">ปิด</button>
+    </div>
+  </form>
+</div>

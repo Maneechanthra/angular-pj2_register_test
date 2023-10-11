@@ -1,0 +1,86 @@
+* {
+  font-family: "Prompt", sans-serif;
+}
+.content {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.card_list {
+  margin-top: 10px;
+  width: 60%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  text-align: center;
+}
+.text-head {
+  margin-bottom: 0;
+  font-size: 20px;
+}
+.order_list {
+  margin-top: 20px;
+  display: flex;
+  justify-content: start;
+  font-weight: bold;
+}
+.card_detail {
+  background-color: white;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+  border: 1px solid rgb(217, 216, 216);
+}
+.btn_del {
+  align-items: start;
+  width: 5%;
+}
+.order_tick {
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+.order_quantity {
+  color: gray;
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+.order_price {
+  margin-left: auto;
+  margin-bottom: 0;
+}
+.order_list_total {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 15px;
+}
+.order_list_total p {
+  font-size: 16px;
+  color: red;
+  font-weight: bold;
+}
+.button_confirm {
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  border: none;
+  background-color: #051937;
+  padding: 7px;
+  color: white;
+  width: 100%;
+}
+.button_confirm:hover {
+  // border-radius: 5px;
+  // border: none;
+  // background-color: #051937;
+  // padding: 7px;
+  // color: white;
+  opacity: 0.8;
+}

@@ -1,0 +1,31 @@
+@import "primeicons/primeicons.css";
+.card {
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+*{
+  font-family: 'Prompt', sans-serif;
+}
+.content{
+  display: block;
+  border-radius: 10px;
+  background-color: #fff;
+  margin: 20px auto;
+  max-width: 900px;
+  padding: 35px 15px 15px 15px ;
+}
+.register{
+  margin-top: 22px; width: 100%;
+}
+.form_1{
+  display: flex; justify-content: space-between;
+}
+.form_2{
+  display: flex; justify-content: space-between; margin-top: 20px; width: 60%;
+}
+.form_3{
+  display: flex; justify-content: space-between; margin-top: 20px;
+}
+.button_css{
+  width: 100%; margin-top: 20px;
+}

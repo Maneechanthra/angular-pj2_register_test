@@ -1,0 +1,143 @@
+<div
+  style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  "
+>
+  <div
+    class="card-content"
+    style="
+      margin-top: 20px;
+      width: 60%;
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+        rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    "
+  >
+    <div style="padding: 10px">
+      <p
+        style="
+          font-size: 30px;
+          font-weight: 800;
+          color: rgb(0, 0, 0);
+          text-align: center;
+          margin-top: 25px;
+        "
+      >
+        รายละเอียดการสั่งซื้อ
+      </p>
+      <button routerLink="/order_history" class="btn btn-primary">
+        ประวัติการสั่งซื้อ
+      </button>
+      <hr />
+      <div class="box-search">
+        <div class="box-input">
+          <div class="box-input-1">
+            <div class="input-1">
+              <input
+                class="form-control input_num_search"
+                minlength="1"
+                maxlength="1"
+                name="num_1"
+                type="text"
+                placeholder="1"
+              />
+              <input
+                class="form-control input_num_search"
+                minlength="1"
+                maxlength="1"
+                name="num_2"
+                type="text"
+                placeholder="2"
+              />
+              <input
+                class="form-control input_num_search"
+                minlength="1"
+                maxlength="1"
+                name="num_3"
+                type="text"
+                placeholder="3"
+              />
+              <input
+                class="form-control input_num_search"
+                minlength="1"
+                maxlength="1"
+                name="num_4"
+                type="text"
+                placeholder="4"
+              />
+              <input
+                class="form-control input_num_search"
+                minlength="1"
+                maxlength="1"
+                name="num_5"
+                type="text"
+                placeholder="5"
+              />
+              <input
+                class="form-control input_num_search"
+                minlength="1"
+                maxlength="1"
+                name="num_6"
+                type="text"
+                placeholder="6"
+              />
+            </div>
+          </div>
+
+          <div class="box-input-2">
+            ชุดที่ :
+
+            <!-------------------------------------------------------------------->
+            <select>
+              <option disabled>เลือกชุดสลาก</option>
+              <option></option>
+            </select>
+          </div>
+          <!-------------------------------------------------------------------->
+          <div class="box-input-3">
+            งวดที่
+            <select>
+              <option disabled>เลือกชุดสลาก</option>
+              <option></option>
+            </select>
+          </div>
+        </div>
+        <div class="box-input">
+          <div class="box-input-4">
+            <button class="btn_search">ค้นหาเลขเด็ด</button>
+          </div>
+          <div class="box-input-5">
+            <button class="btn_reset" type="reset">เคลียร์</button>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">วันที่สั่งซื้อ</th>
+            <th scope="col">ชื่อ-นามสกุลผู้สั่งซื้อ</th>
+            <th scope="col">หมายเลขสลาก</th>
+            <th scope="col">ราคา / ใบ</th>
+            <th scope="col">จำนวน</th>
+            <th scope="col">ราคารวม</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let lottoryhistory of lottoryhistory">
+            <td data-label="Due Date">{{ lottoryhistory.buy_date }}</td>
+            <td data-label="Name">
+              {{ lottoryhistory.fname }} {{ lottoryhistory.lname }}
+            </td>
+            <td data-label="Lottory">{{ lottoryhistory.ticket_id }}</td>
+            <td data-label="Price">{{ lottoryhistory.price }}</td>
+            <td data-label="Amount">{{ lottoryhistory.amount }}</td>
+            <td data-label="Total">{{ lottoryhistory.total_price }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="content">
+  <div class="card_list">
+    <p class="text-center mt-3 text-head">รายการสั่งซื้อ</p>
+    <!-- <hr /> -->
+    <p class="order_list">รายการล็อตเตอรี่</p>
+    <div *ngFor="let order of selectedLotIds; let i = index" class="card_detail">
+      <button class="btn btn-danger btn_del"  (click)="removeOrder(order.lot_id)">X</button>
+      <p class="order_tick">{{ order.ticket_id }} (เลขชุด)</p>
+      <p  class="order_quantity" >x {{order.quantity}}</p>
+      <p class="order_price" *ngIf="order.quantity * order.price">{{ order.quantity * order.price }}.00 บาท</p>
+    </div>
+    <div class="order_list_total">
+      <p>ยอดรวมทั้งหมด</p>
+      <p>{{ totalPrice | currency:'THB ' }}</p>
+    </div>
+    <button class="button_confirm" (click)="confirmOrder()">ยืนยันการสั่งซื้อ</button>
+  </div>
+</div>
+
+<!-- <div
+  style="display: flex; justify-content: center; align-items: center; flex-direction: column; ">
+  <div class="card"
+    style="margin-top: 20px; width: 60%; ">
+    <div style="padding: 10px;">
+      <p>รายการสั่งซื้อ</p>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr class="text-center">
+              <th scope="col">#</th>
+              <th scope="col">เลขสลาก</th>
+              <th scope="col">จำนวน</th>
+              <th scope="col">ราคาต่อใบ (บาท)</th>
+              <th scope="col">ราคารวม (บาท)</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr class="text-center" *ngFor="let order of selectedLotIds; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ order.ticket_id }}</td>
+                <td>
+                  <input type="number" name="amount" id="amount" [(ngModel)]="order.quantity"  style="width: 100px;">
+                </td>
+                <td>{{ order.price }}</td>
+                <td>
+                  <ng-container *ngIf="order.quantity * order.price">
+                    {{ order.quantity * order.price }}
+                  </ng-container>
+                </td>
+                <td>
+                  <button class="btn btn-primary" style="width: 30%;" (click)="buy(order.lot_id, order.quantity, order.price, order.quantity * order.price)">สั่งซื้อ</button>
+                  <button style="margin-left: 10px; width: 30%;" class="btn btn-danger" (click)="removeOrder(order.lot_id)">ลบ</button>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div> -->

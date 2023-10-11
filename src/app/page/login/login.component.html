@@ -1,0 +1,30 @@
+<div class="content">
+<div class="font form-logins">
+  <div >
+    <div class="login">
+      <div>
+        <p style="font-size: 30px;">เข้าสู่ระบบ</p>
+      </div>
+      <form>
+        <input type="text" name="email" placeholder="Email Address *"
+          class="form-control" #email>
+        <input style="margin-top: 20px;" type="password" name="password"
+          placeholder="Password" class="form-control w-100"
+          #password>
+        <div
+          style="display: flex; justify-content: start; align-items: center; margin-top: 20px;">
+          <input style type="checkbox" name="remember">
+          <label for="remember" style="margin-left: 10px; ">Remember me</label>
+        </div>
+        <button class="btn btn-primary" name="btnlogin"
+          style="width: 200px; margin-top: 20px;" (click)="login(email.value,password.value)">เข้าสู่ระบบ</button>
+        <button routerLink="/register" class="btn btn-danger" name="btnregister"
+          style="width: 200px; margin-top: 20px; margin-left: 10px;">สมัครสมาชิก</button>
+        <div style="display: flex; margin-top: 10px;">
+          <a href="#">ลืมรหัสผ่าน ?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>

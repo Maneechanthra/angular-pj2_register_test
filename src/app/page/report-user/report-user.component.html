@@ -1,0 +1,198 @@
+<body>
+  <div class="con">
+    <aside>
+      <div class="top">
+        <div class="logo">
+          <img src="../../../assets/img/03.png" />
+          <h1>Lottory</h1>
+        </div>
+        <div class="close" id="close-btn">
+          <span class="material-symbols-outlined"> close </span>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <!-- <a href="#">
+                    <span class="material-symbols-outlined">
+                        person
+                    </span>
+                  <h3>Dashboard</h3>
+              </a> -->
+        <a routerLink="/dashboard">
+          <!-- <span class="material-symbols-outlined">grid_view</span> -->
+          <h3>หน้าแรก</h3>
+        </a>
+        <a routerLink="/report_user" class="active">
+          <!-- <span class="material-symbols-outlined">grid_view</span> -->
+          <h3>รายงานจำนวนผู้ใช้งาน</h3>
+        </a>
+        <a routerLink="/report_ticket">
+          <!-- <span class="material-symbols-outlined">grid_view</span> -->
+          <h3>รายงานจำนวนสลาก</h3>
+        </a>
+        <a routerLink="/report_buyticket">
+          <!-- <span class="material-symbols-outlined">grid_view</span> -->
+          <h3>รายงานรายละเอียดการสั่งซื้อ</h3>
+        </a>
+        <a href="/login">
+          <!-- <span class="material-symbols-outlined"> logout </span> -->
+          <h3>Logout</h3>
+        </a>
+      </div>
+    </aside>
+    <!----------------------------------- END OF ASIDE -------------------------->
+
+    <main>
+      <h1>รายงานจำนวนผู้ใช้งาน</h1>
+      <div class="date">
+        <p>รายงานจำนวนผู้ใช้งาน</p>
+      </div>
+      <div class="insights">
+        <div class="circle_1">
+          <span></span>
+          <div class="middle">
+            <div class="left">
+              <h3>จำนวนผู้ใช้งาน</h3>
+              <h1>{{ account.length }} คน</h1>
+            </div>
+            <!-- <div class="progress1">
+                          <svg>
+                              <circle cx='38' cy='38' r='36'></circle>
+                          </svg>
+                          <div class="number">
+                              <p>81%</p>
+                          </div>
+                      </div> -->
+          </div>
+        </div>
+        <div class="circle_2">
+          <span></span>
+          <div class="middle">
+            <div class="left">
+              <h3>จำนวนสลากทั้งหมด</h3>
+              <h1>{{lottory_total.length}} ใบ</h1>
+            </div>
+            <!-- <div class="progress1">
+                          <svg>
+                              <circle cx='38' cy='38' r='36'></circle>
+                          </svg>
+                          <div class="number">
+                              <p>81%</p>
+                          </div>
+                      </div> -->
+          </div>
+        </div>
+
+        <div class="circle_3">
+          <span></span>
+          <div class="middle">
+            <div class="left">
+              <h3>จำนวนการสั่งซื้อทั้งหมด</h3>
+              <h1>{{totalBuytciket.length}} รายการ</h1>
+            </div>
+            <!-- <div class="progress1">
+                          <svg>
+                              <circle cx='38' cy='38' r='36'></circle>
+                          </svg>
+                          <div class="number">
+                              <p>81%</p>
+                          </div>
+                      </div> -->
+          </div>
+        </div>
+        <!-------------------------- END OF INCOME -------------------------->
+      </div>
+
+      <!-------------------------- ORDER -------------------------->
+      <div class="recent-orders">
+        <h2>Recent Orders</h2>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">ชื่อ-นามสกุล</th>
+              <th scope="col">อีเมล</th>
+              <th scope="col">เบอร์โทรศัพท์</th>
+              <th scope="col">วันเดือนปีเกิด</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let account_2 of filteredAc">
+              <td scope="row" data-label="ชื่อ-นามสกุล">{{account_2.fname}}
+                {{account_2.lname}}</td>
+              <td data-label="อีเมล">{{account_2.email}}</td>
+              <td data-label="เบอร์โทรศัพท์">{{account_2.tel_number}}</td>
+              <td data-label="วันเดือนปีเกิด">{{account_2.bdate}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <div class="pagination">
+          <button class="btn btn-primary" (click)="prevPage()">Previous</button>
+          <button class="btn btn-primary" (click)="nextPage()">Next</button>
+        </div>
+
+        <a href="#">Show All</a>
+      </div>
+    </main>
+
+    <!-------------------------- END OF MAIN -------------------------->
+
+    <div class="right">
+      <div class="top">
+        <button id="menu-btn">
+          <span class="material-symbols-outlined"> menu </span>
+        </button>
+        <div class="profile">
+          <div class="info">
+            <p>Hey, <b>{{ userData.fname }} {{ userData.lname }}</b></p>
+            <small class="text-muted">Admin</small>
+          </div>
+          <!-- <div class="profile-photo">
+                      <span class="material-symbols-outlined">
+                          person
+                      </span>
+                  </div> -->
+        </div>
+      </div>
+
+      <!-------------------------- END OF TOP -------------------------->
+
+      <!-- <div class="recent-updates">
+        <h2>Recent Updates</h2>
+        <div class="updates">
+          <div class="update">
+            <span class="material-symbols-outlined"> person </span>
+            <div class="message">
+              <p>
+                <b>Mike Tyson</b> receivaed his order of Night lion tect GPS
+                drone.
+              </p>
+              <small class="text-muted">2 Minutes Ago</small>
+            </div>
+          </div>
+          <div class="update">
+            <span class="material-symbols-outlined"> person </span>
+            <div class="message">
+              <p>
+                <b>Mike Tyson</b> receivaed his order of Night lion tect GPS
+                drone.
+              </p>
+              <small class="text-muted">2 Minutes Ago</small>
+            </div>
+          </div>
+          <div class="update">
+            <span class="material-symbols-outlined"> person </span>
+            <div class="message">
+              <p>
+                <b>Mike Tyson</b> receivaed his order of Night lion tect GPS
+                drone.
+              </p>
+              <small class="text-muted">2 Minutes Ago</small>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</body>

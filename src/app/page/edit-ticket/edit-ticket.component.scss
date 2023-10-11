@@ -1,0 +1,49 @@
+p{
+  margin: 0px;
+}
+.box-content{
+  padding: 50px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin: 0 auto;
+  font-family: "Prompt", sans-serif;
+}
+form{
+  margin: 0px;
+  border: none;
+}
+.text-top{
+  color: #333;
+  font-size: 25px;
+  font-weight: bold;
+}
+input{
+  border: 1px solid #ccc;
+  padding: 7px;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 5px;
+}
+label{
+  margin-top: 5px;
+  font-weight: bold;
+}
+button{
+  background-color: blue;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: .2s;
+  margin-top: 10px;
+  border: none;
+}
+button:hover{
+  opacity: 0.8;
+}
+.box-two{
+  display: flex;
+  gap: 10px;
+}
+.box{
+  width: 100%;
+}

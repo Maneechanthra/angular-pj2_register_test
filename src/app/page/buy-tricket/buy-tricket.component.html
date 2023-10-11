@@ -1,0 +1,218 @@
+<div class="content">
+  <div class="box-search">
+    <div class="text-top">
+      <p style="font-size: 30px; margin: 0px">ค้นหาสลาก</p>
+      <p style="font-size: 20px; margin: 0px">ค้นหาเลขเด็ด</p>
+    </div>
+
+    <div class="box-input">
+      <div class="box-input-1">
+        <div class="input-1">
+          <input
+            [(ngModel)]="num_1"
+            class="form-control input_num_search"
+            minlength="1"
+            maxlength="1"
+            name="num_1"
+            type="text"
+            placeholder="1"
+          />
+          <input
+            [(ngModel)]="num_2"
+            class="form-control input_num_search"
+            minlength="1"
+            maxlength="1"
+            name="num_2"
+            type="text"
+            placeholder="2"
+          />
+          <input
+            [(ngModel)]="num_3"
+            class="form-control input_num_search"
+            minlength="1"
+            maxlength="1"
+            name="num_3"
+            type="text"
+            placeholder="3"
+          />
+          <input
+            [(ngModel)]="num_4"
+            class="form-control input_num_search"
+            minlength="1"
+            maxlength="1"
+            name="num_4"
+            type="text"
+            placeholder="4"
+          />
+          <input
+            [(ngModel)]="num_5"
+            class="form-control input_num_search"
+            minlength="1"
+            maxlength="1"
+            name="num_5"
+            type="text"
+            placeholder="5"
+          />
+          <input
+            [(ngModel)]="num_6"
+            class="form-control input_num_search"
+            minlength="1"
+            maxlength="1"
+            name="num_6"
+            type="text"
+            placeholder="6"
+          />
+        </div>
+      </div>
+
+      <div class="box-input-2">
+        ชุดที่ :
+
+        <!-------------------------------------------------------------------->
+        <select [(ngModel)]="selectedSetNo">
+          <option disabled>เลือกชุดสลาก</option>
+          <option *ngFor="let setNo of optionsArray" [value]="setNo">
+            {{ setNo }}
+          </option>
+        </select>
+      </div>
+      <!-------------------------------------------------------------------->
+      <div class="box-input-3">
+        งวดที่
+        <select [(ngModel)]="round_no">
+          <option disabled>เลือกชุดสลาก</option>
+          <option *ngFor="let roundNos of optionsArray" [value]="roundNos">
+            {{ roundNos }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="box-input">
+      <div class="box-input-4">
+        <button class="btn_search" (click)="searchTicket()">
+          ค้นหาเลขเด็ด
+        </button>
+      </div>
+      <div class="box-input-5">
+        <button class="btn_reset" type="reset" (click)="resetForm()">
+          เคลียร์
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="searchedLottory.length > 0">
+    <div class="box-input-a">
+      <div *ngFor="let lottory of searchedLottory">
+        <div class="box-input-b">
+          <div class="box-input-text">
+            <img src="../../../assets/img/03.png" alt="Logo" height="30px" />
+            <div style="margin-left: 5px">สลากกินแบ่งรัฐบาล</div>
+          </div>
+          <div class="box-4">
+            <div class="lot_ticket">
+              <p style="margin: 0px">{{ lottory.ticket_id }}</p>
+            </div>
+            <div>
+              <p style="margin: 0px">ชุดที่</p>
+              <span>{{ lottory.set_no }}</span>
+            </div>
+            <div>
+              <p style="margin: 0px">งวดที่</p>
+              <span>{{ lottory.round_no }}</span>
+            </div>
+            <div>
+              <button
+                class="btn btn-outline-primary"
+                (click)="
+                  openDialog(
+                    lottory.lot_id,
+                    lottory.ticket_id,
+                    lottory.round_no,
+                    lottory.set_no,
+                    lottory.price,
+                    lottory.amount
+                  )
+                "
+              >
+                เลือก
+              </button>
+            </div>
+          </div>
+          <div class="box-2">
+            <span>ร้านสลากกินดีอยู่ดี</span>
+            <span>ราคา {{ lottory.price }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--==============================================================-->
+
+  <div *ngIf="searchedLottory.length === 0">
+    <div class="box-input-a">
+      <ng-container *ngFor="let lottory of lotteryPerPage">
+        <div class="box-input-b">
+          <div class="box-input-text">
+            <img src="../../../assets/img/03.png" alt="Logo" height="30px" />
+            <div style="margin-left: 5px">สลากกินแบ่งรัฐบาล</div>
+          </div>
+          <div class="box-4">
+            <div class="lot_ticket">
+              <p style="margin: 0px">{{ lottory.ticket_id }}</p>
+            </div>
+            <div>
+              <p style="margin: 0px">ชุดที่</p>
+              <span>{{ lottory.set_no }}</span>
+            </div>
+            <div>
+              <p style="margin: 0px">งวดที่</p>
+              <span>{{ lottory.round_no }}</span>
+            </div>
+            <div>
+              <button
+                class="btn btn-outline-primary"
+                (click)="
+                  openDialog(
+                    lottory.lot_id,
+                    lottory.ticket_id,
+                    lottory.round_no,
+                    lottory.set_no,
+                    lottory.price,
+                    lottory.amount
+                  )
+                "
+              >
+                เลือก
+              </button>
+            </div>
+          </div>
+          <div class="box-2">
+            <span>ร้านสลากกินดีอยู่ดี</span>
+            <span>ราคา {{ lottory.price }}</span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div style="margin-top: 20px" class="box-next">
+    <button
+      class="btn btn-primary"
+      (click)="previousPage()"
+      [disabled]="currentPage === 1"
+    >
+      ก่อนหน้า
+    </button>
+
+    <span style="margin: 10px">{{ currentPage }}</span>
+
+    <button
+      class="btn btn-primary"
+      (click)="nextPage()"
+      [disabled]="currentPage * pageSize >= lottory.length"
+    >
+      ถัดไป
+    </button>
+  </div>
+</div>
+
+<!-- (click)="openDialog(lottory.lot_id,lottory.ticket_id,lottory.round_no,lottory.set_no,lottory.price,lottory.amount,lottory.date_lot) -->
