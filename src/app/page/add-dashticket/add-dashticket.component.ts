@@ -48,8 +48,6 @@ export class AddDashticketComponent {
     this.dataSubject.next(newData);
   }
 
-  // ใน constructor หรือ ngOnInit รับข้อมูลเริ่มต้นและสร้างตารางหรือรายการข้อมูล
-
   addlottory(
     ticket_id: string,
     set_no: string,
@@ -81,23 +79,20 @@ export class AddDashticketComponent {
       .post(this.dataService.apiendpoint + '/dashboard/addlottory', requestBody)
       .subscribe(
         (response: any) => {
-          // อัพเดทข้อมูลในตารางหรือรายการข้อมูลทันที
-          this.lottory.push(response.data); // หรืออัพเดทตารางหรือรายการข้อมูลอื่น ๆ ตามที่คุณต้องการ
-          // แสดงข้อความสำเร็จ
+          this.lottory.push(response.data);
+
           Swal.fire({
             title: 'บันทึกข้อมูลสลากสำเร็จ!',
             text: 'คุณได้ทำการบันทึกข้อมูลสลากสำเร็จ',
             icon: 'success',
             confirmButtonText: 'ตกลง',
           });
-          // ปิด dialog หลังจากการบันทึก
+
           this.dialogRef.close();
 
-          // อัพเดทตารางหรือรายการข้อมูลใน UI
-          this.updateData(this.lottory); // เรียกใช้ฟังก์ชัน updateData เพื่ออัพเดท UI
+          this.updateData(this.lottory);
         },
         (error) => {
-          // แสดงข้อความเกิดข้อผิดพลาด
           Swal.fire({
             title: 'เกิดข้อผิดพลาด!',
             text: 'ไม่สามารถบันทึกข้อมูลสลากได้',

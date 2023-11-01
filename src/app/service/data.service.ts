@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable({
@@ -14,6 +15,10 @@ export class DataService {
   selectedLotCount: number = 0;
 
   constructor(private http: HttpClient) {}
+
+  getData(): Observable<any> {
+    return this.http.get<any>(this.apiendpoint + '/dashboard/lotteryData');
+  }
 
   selectlot(lot_id: number) {
     return this.http.get(`${this.apiendpoint}/lottory/${lot_id}`);

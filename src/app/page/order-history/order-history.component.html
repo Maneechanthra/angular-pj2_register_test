@@ -104,17 +104,30 @@
         <div class="box-input">
           <div class="box-input-4">
             <button class="btn_search" (click)="searchTicket()">
-              ค้นหาเลขเด็ด
+              ค้นหาการสั่งซื้อ
             </button>
           </div>
           <div class="box-input-5">
-            <button class="btn_reset" type="reset">เคลียร์</button>
+            <button class="btn_reset" type="reset" (click)="resetForm()">
+              เคลียร์
+            </button>
           </div>
         </div>
       </div>
 
       <hr />
-      <table *ngIf="searchedLottory.length === 0">
+      <table
+        *ngIf="
+          searchedLottory.length === 0 &&
+          !num_1 &&
+          !num_2 &&
+          !num_3 &&
+          !num_4 &&
+          !num_5 &&
+          !num_6 &&
+          !selectedDate
+        "
+      >
         <thead>
           <tr>
             <th scope="col">วันที่สั่งซื้อ</th>
@@ -139,6 +152,19 @@
         </tbody>
       </table>
 
+      <table
+        *ngIf="
+          searchedLottory.length === 0 &&
+          (num_1 || num_2 || num_3 || num_4 || num_5 || num_6 || selectedDate)
+        "
+      >
+        <thead>
+          <tr>
+            <th scope="col">No data found for the selected criteria.</th>
+          </tr>
+        </thead>
+      </table>
+
       <table *ngIf="searchedLottory.length > 0">
         <thead>
           <tr>
@@ -157,8 +183,8 @@
               {{ order.fname }} {{ order.lname }}
             </td>
             <td data-label="หมายเลขสลาก">{{ order.ticket_id }}</td>
-            <td data-label="ราคา / ใบ">{{ order.amount }}</td>
-            <td data-label="จำนวน">{{ order.price }}</td>
+            <td data-label="ราคา / ใบ">{{ order.price }}</td>
+            <td data-label="จำนวน">{{ order.amount }}</td>
             <td data-label="ราคารวม">{{ order.total_price }}</td>
           </tr>
         </tbody>

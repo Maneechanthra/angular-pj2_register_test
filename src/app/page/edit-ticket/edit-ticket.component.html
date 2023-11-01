@@ -1,30 +1,82 @@
-<input type="hidden" [(ngModel)]="datalot.lot_id" name="lot_id">
+<input type="hidden" [(ngModel)]="datalot.lot_id" name="lot_id" />
 <div class="box-content">
   <div class="text-top">
     <p>แก้ไขข้อมูลสลากกินแบ่งรัฐบาล</p>
   </div>
   <form *ngIf="datalot">
     <label>เลขสลาก</label>
-    <input type="text" placeholder="หมายเลขสลาก" [(ngModel)]="datalot.ticket_id" name="ticket_id">
+    <input
+      type="text"
+      placeholder="หมายเลขสลาก"
+      [(ngModel)]="datalot.ticket_id"
+      name="ticket_id"
+    />
     <div class="box-two">
       <div class="box">
         <label>ชุดที่ : </label>
-        <input type="text" placeholder="ชุดที่" [(ngModel)]="datalot.set_no" name="set_no">
+        <input
+          type="text"
+          placeholder="ชุดที่"
+          [(ngModel)]="datalot.set_no"
+          name="set_no"
+        />
       </div>
       <div class="box">
         <label>งวดประจำวันที่ : </label>
-        <input type="date" [(ngModel)]="datalot.date_lot" name="date_lot">
+        <input type="date" [(ngModel)]="datalot.date_lot" name="date_lot" />
       </div>
     </div>
     <label>งวดที่ : </label>
-    <input type="text" placeholder="งวดที่" [(ngModel)]="datalot.round_no" name="round_no">
+    <input
+      type="text"
+      placeholder="งวดที่"
+      [(ngModel)]="datalot.round_no"
+      name="round_no"
+    />
     <label>ราคา : </label>
-    <input type="text" placeholder="ราคาสลาก" [(ngModel)]="datalot.price" name="price">
+    <input
+      type="text"
+      placeholder="ราคาสลาก"
+      [(ngModel)]="datalot.price"
+      name="price"
+    />
     <label>จำนวน : </label>
-    <input type="number" placeholder="จำนวนสลาก" [(ngModel)]="datalot.amount" name="amount">
-    <div style="width: 100%; display: flex; flex-direction: column; justify-content: center;">
-      <button style="width: 100%;" (click)="etidlottory(datalot.lot_id, datalot.ticket_id, datalot.set_no, datalot.date_lot, datalot.round_no, datalot.price, datalot.amount)">บันทึกข้อมูล</button>
-      <button style="width: 100%;  background-color: red;" (click)="closeDialog()">ปิด</button>
+    <input
+      type="number"
+      placeholder="จำนวนสลาก"
+      [(ngModel)]="datalot.amount"
+      name="amount"
+    />
+    <div
+      style="
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      "
+    >
+      <button
+        style="width: 100%"
+        (click)="
+          editlottory(
+            datalot.lot_id,
+            datalot.ticket_id,
+            datalot.set_no,
+            datalot.date_lot,
+            datalot.round_no,
+            datalot.price,
+            datalot.amount
+          )
+        "
+      >
+        บันทึกข้อมูล
+      </button>
+      <button
+        style="width: 100%; background-color: red"
+        (click)="closeDialog()"
+      >
+        ปิด
+      </button>
     </div>
   </form>
 </div>

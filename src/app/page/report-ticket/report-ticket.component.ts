@@ -163,7 +163,6 @@ export class ReportTicketComponent implements OnInit {
   }
 
   removelottory(lot_id: any) {
-    // Confirm with the user before deleting
     Swal.fire({
       title: 'ยืนยันการลบ?',
       text: 'คุณต้องการลบรายการนี้ใช่หรือไม่?',
@@ -173,12 +172,10 @@ export class ReportTicketComponent implements OnInit {
       cancelButtonText: 'ไม่ใช่',
     }).then((result) => {
       if (result.isConfirmed) {
-        // If the user confirms, send an HTTP DELETE request
         this.http
           .delete(`${this.dataServive.apiendpoint}/deletelottory/${lot_id}`)
           .subscribe(
             (response: any) => {
-              // ลบสำเร็จ อัพเดทข้อมูลในตาราง
               this.filteredLottory = this.filteredLottory.filter(
                 (lottory) => lottory.lot_id !== lot_id
               );

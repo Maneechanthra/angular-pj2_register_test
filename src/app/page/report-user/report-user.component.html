@@ -28,7 +28,7 @@
         </a>
         <a routerLink="/report_ticket">
           <!-- <span class="material-symbols-outlined">grid_view</span> -->
-          <h3>รายงานจำนวนสลาก</h3>
+          <h3>รายงานรายละเอียดหมายเลขสลาก</h3>
         </a>
         <a routerLink="/report_buyticket">
           <!-- <span class="material-symbols-outlined">grid_view</span> -->
@@ -69,8 +69,8 @@
           <span></span>
           <div class="middle">
             <div class="left">
-              <h3>จำนวนสลากทั้งหมด</h3>
-              <h1>{{lottory_total.length}} ใบ</h1>
+              <h3>จำนวนหมายเลขสลากทั้งหมด</h3>
+              <h1>{{ lottory_total.length }} ใบ</h1>
             </div>
             <!-- <div class="progress1">
                           <svg>
@@ -88,7 +88,7 @@
           <div class="middle">
             <div class="left">
               <h3>จำนวนการสั่งซื้อทั้งหมด</h3>
-              <h1>{{totalBuytciket.length}} รายการ</h1>
+              <h1>{{ totalBuytciket.length }} รายการ</h1>
             </div>
             <!-- <div class="progress1">
                           <svg>
@@ -117,22 +117,20 @@
           </thead>
           <tbody>
             <tr *ngFor="let account_2 of filteredAc">
-              <td scope="row" data-label="ชื่อ-นามสกุล">{{account_2.fname}}
-                {{account_2.lname}}</td>
-              <td data-label="อีเมล">{{account_2.email}}</td>
-              <td data-label="เบอร์โทรศัพท์">{{account_2.tel_number}}</td>
-              <td data-label="วันเดือนปีเกิด">{{account_2.bdate}}</td>
+              <td scope="row" data-label="ชื่อ-นามสกุล">
+                {{ account_2.fname }} {{ account_2.lname }}
+              </td>
+              <td data-label="อีเมล">{{ account_2.email }}</td>
+              <td data-label="เบอร์โทรศัพท์">{{ account_2.tel_number }}</td>
+              <td data-label="วันเดือนปีเกิด">{{ account_2.bdate }}</td>
             </tr>
           </tbody>
         </table>
-
 
         <div class="pagination">
           <button class="btn btn-primary" (click)="prevPage()">Previous</button>
           <button class="btn btn-primary" (click)="nextPage()">Next</button>
         </div>
-
-        <a href="#">Show All</a>
       </div>
     </main>
 
@@ -145,7 +143,9 @@
         </button>
         <div class="profile">
           <div class="info">
-            <p>Hey, <b>{{ userData.fname }} {{ userData.lname }}</b></p>
+            <p>
+              Hey, <b>{{ userData.fname }} {{ userData.lname }}</b>
+            </p>
             <small class="text-muted">Admin</small>
           </div>
           <!-- <div class="profile-photo">

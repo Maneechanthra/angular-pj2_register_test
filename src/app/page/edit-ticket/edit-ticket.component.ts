@@ -24,6 +24,7 @@ export class EditTicketComponent implements OnInit {
   selectedLottery: any;
   datalot: any;
 
+  filteredLottory = Array<Lottory>();
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<EditTicketComponent>,
@@ -46,7 +47,7 @@ export class EditTicketComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  etidlottory(
+  editlottory(
     lot_id: any,
     ticket_id: any,
     set_no: any,
@@ -97,11 +98,11 @@ export class EditTicketComponent implements OnInit {
           )
           .subscribe(
             (response: any) => {
-              // หลังจากบันทึกสำเร็จ ลบรายการที่แก้ไขออกจากรายการ
-              this.lottory = this.lottory.filter(
-                (lottory) => lottory.lot_id !== lot_id
+              this.filteredLottory = this.filteredLottory.filter(
+                (lottory) => lottory.lot_id !== lot_id,
+
+                console.log(this.filteredLottory)
               );
-              console.log(response.status);
               Swal.fire({
                 title: 'บันทึกข้อมูลสลากสำเร็จ!',
                 text: 'คุณได้ทำการบันทึกข้อมูลสลากสำเร็จ',
@@ -111,7 +112,6 @@ export class EditTicketComponent implements OnInit {
               this.dialogRef.close();
             },
             (error) => {
-              // แสดงข้อความเกิดข้อผิดพลาด
               Swal.fire({
                 title: 'เกิดข้อผิดพลาด!',
                 text: 'ไม่สามารถบันทึกข้อมูลสลากได้',

@@ -18,7 +18,7 @@
                     </span>
                   <h3>Dashboard</h3>
               </a> -->
-        <a routerLink="/dashboard" >
+        <a routerLink="/dashboard">
           <!-- <span class="material-symbols-outlined">grid_view</span> -->
           <h3>หน้าแรก</h3>
         </a>
@@ -28,7 +28,7 @@
         </a>
         <a routerLink="/report_ticket">
           <!-- <span class="material-symbols-outlined">grid_view</span> -->
-          <h3>รายงานจำนวนสลาก</h3>
+          <h3>รายงานรายละเอียดหมายเลขสลาก</h3>
         </a>
         <a routerLink="/report_buyticket" class="active">
           <!-- <span class="material-symbols-outlined">grid_view</span> -->
@@ -55,31 +55,15 @@
               <h3>จำนวนผู้ใช้งาน</h3>
               <h1>{{ account.length }} คน</h1>
             </div>
-            <!-- <div class="progress1">
-                          <svg>
-                              <circle cx='38' cy='38' r='36'></circle>
-                          </svg>
-                          <div class="number">
-                              <p>81%</p>
-                          </div>
-                      </div> -->
           </div>
         </div>
         <div class="circle_2">
           <span></span>
           <div class="middle">
             <div class="left">
-              <h3>จำนวนสลากทั้งหมด</h3>
-              <h1>{{lottory_total.length}} ใบ</h1>
+              <h3>จำนวนหมายเลขสลากทั้งหมด</h3>
+              <h1>{{ lottory_total.length }} ใบ</h1>
             </div>
-            <!-- <div class="progress1">
-                          <svg>
-                              <circle cx='38' cy='38' r='36'></circle>
-                          </svg>
-                          <div class="number">
-                              <p>81%</p>
-                          </div>
-                      </div> -->
           </div>
         </div>
 
@@ -88,16 +72,8 @@
           <div class="middle">
             <div class="left">
               <h3>จำนวนการสั่งซื้อทั้งหมด</h3>
-              <h1>{{totalBuytciket.length}} รายการ</h1>
+              <h1>{{ totalBuytciket.length }} รายการ</h1>
             </div>
-            <!-- <div class="progress1">
-                          <svg>
-                              <circle cx='38' cy='38' r='36'></circle>
-                          </svg>
-                          <div class="number">
-                              <p>81%</p>
-                          </div>
-                      </div> -->
           </div>
         </div>
         <!-------------------------- END OF INCOME -------------------------->
@@ -116,14 +92,15 @@
           </thead>
           <tbody>
             <tr *ngFor="let report of report">
-              <td scope="row" data-label="ชื่อ-นามสกุลผู้ซื้อ">{{report.fname}} {{report.lname}}</td>
-              <td data-label="หมายเลขสลาก">{{report.ticket_id}}</td>
-              <td data-label="จำนวน">{{report.amount}}</td>
-              <td data-label="ราคา">{{report.total_price}}</td>
+              <td scope="row" data-label="ชื่อ-นามสกุลผู้ซื้อ">
+                {{ report.fname }} {{ report.lname }}
+              </td>
+              <td data-label="หมายเลขสลาก">{{ report.ticket_id }}</td>
+              <td data-label="จำนวน">{{ report.amount }}</td>
+              <td data-label="ราคา">{{ report.total_price }}</td>
             </tr>
           </tbody>
         </table>
-        <a href="#">Show All</a>
       </div>
     </main>
 
@@ -136,7 +113,9 @@
         </button>
         <div class="profile">
           <div class="info">
-            <p>Hey, <b>{{ userData.fname }} {{ userData.lname }}</b></p>
+            <p>
+              Hey, <b>{{ userData.fname }} {{ userData.lname }}</b>
+            </p>
             <small class="text-muted">Admin</small>
           </div>
           <!-- <div class="profile-photo">
@@ -148,42 +127,6 @@
       </div>
 
       <!-------------------------- END OF TOP -------------------------->
-
-      <!-- <div class="recent-updates">
-        <h2>Recent Updates</h2>
-        <div class="updates">
-          <div class="update">
-            <span class="material-symbols-outlined"> person </span>
-            <div class="message">
-              <p>
-                <b>Mike Tyson</b> receivaed his order of Night lion tect GPS
-                drone.
-              </p>
-              <small class="text-muted">2 Minutes Ago</small>
-            </div>
-          </div>
-          <div class="update">
-            <span class="material-symbols-outlined"> person </span>
-            <div class="message">
-              <p>
-                <b>Mike Tyson</b> receivaed his order of Night lion tect GPS
-                drone.
-              </p>
-              <small class="text-muted">2 Minutes Ago</small>
-            </div>
-          </div>
-          <div class="update">
-            <span class="material-symbols-outlined"> person </span>
-            <div class="message">
-              <p>
-                <b>Mike Tyson</b> receivaed his order of Night lion tect GPS
-                drone.
-              </p>
-              <small class="text-muted">2 Minutes Ago</small>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 </body>

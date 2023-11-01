@@ -112,13 +112,13 @@
     background-color: #fff;
     padding: 10px;
     border-radius: 5px;
-    flex: 33.33%;
+    flex: 30%;
   }
   .box-input-2{
     background-color: #fff;
     padding: 10px;
     border-radius: 5px;
-    flex: 33.33%;
+    flex: 70%;
   }
   .box-input-3{
     background-color: #fff;
@@ -163,6 +163,12 @@
   .box-2{
     display: flex;
     justify-content: space-between;
+  }
+  input[type=date] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 5px;
   }
   @media screen and (max-width: 600px) {
     table {
