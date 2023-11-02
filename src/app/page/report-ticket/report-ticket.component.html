@@ -12,30 +12,19 @@
       </div>
 
       <div class="sidebar">
-        <!-- <a href="#">
-                    <span class="material-symbols-outlined">
-                        person
-                    </span>
-                  <h3>Dashboard</h3>
-              </a> -->
         <a routerLink="/dashboard">
-          <!-- <span class="material-symbols-outlined">grid_view</span> -->
           <h3>หน้าแรก</h3>
         </a>
         <a routerLink="/report_user">
-          <!-- <span class="material-symbols-outlined">grid_view</span> -->
           <h3>รายงานจำนวนผู้ใช้งาน</h3>
         </a>
         <a routerLink="/report_ticket" class="active">
-          <!-- <span class="material-symbols-outlined">grid_view</span> -->
-          <h3>รายงานจำนวนสลาก</h3>
+          <h3>รายงานรายละเอียดหมายเลขสลาก</h3>
         </a>
         <a routerLink="/report_buyticket">
-          <!-- <span class="material-symbols-outlined">grid_view</span> -->
           <h3>รายงานรายละเอียดการสั่งซื้อ</h3>
         </a>
         <a href="/login">
-          <!-- <span class="material-symbols-outlined"> logout </span> -->
           <h3>Logout</h3>
         </a>
       </div>
@@ -55,31 +44,15 @@
               <h3>จำนวนผู้ใช้งาน</h3>
               <h1>{{ account.length }} คน</h1>
             </div>
-            <!-- <div class="progress1">
-                          <svg>
-                              <circle cx='38' cy='38' r='36'></circle>
-                          </svg>
-                          <div class="number">
-                              <p>81%</p>
-                          </div>
-                      </div> -->
           </div>
         </div>
         <div class="circle_2">
           <span></span>
           <div class="middle">
             <div class="left">
-              <h3>จำนวนสลากทั้งหมด</h3>
-              <h1>{{lottory_total.length}} ใบ</h1>
+              <h3>จำนวนหมายเลขสลากทั้งหมด</h3>
+              <h1>{{ lottory_total.length }} ใบ</h1>
             </div>
-            <!-- <div class="progress1">
-                          <svg>
-                              <circle cx='38' cy='38' r='36'></circle>
-                          </svg>
-                          <div class="number">
-                              <p>81%</p>
-                          </div>
-                      </div> -->
           </div>
         </div>
 
@@ -88,16 +61,8 @@
           <div class="middle">
             <div class="left">
               <h3>จำนวนการสั่งซื้อทั้งหมด</h3>
-              <h1>{{totalBuytciket.length}} รายการ</h1>
+              <h1>{{ totalBuytciket.length }} รายการ</h1>
             </div>
-            <!-- <div class="progress1">
-                          <svg>
-                              <circle cx='38' cy='38' r='36'></circle>
-                          </svg>
-                          <div class="number">
-                              <p>81%</p>
-                          </div>
-                      </div> -->
           </div>
         </div>
         <!-------------------------- END OF INCOME -------------------------->
@@ -121,21 +86,41 @@
           </thead>
           <tbody>
             <tr *ngFor="let lottory of filteredLottory">
-              <td data-label="Account">{{lottory.lot_id}}</td>
-              <td data-label="Due Date">{{lottory.ticket_id}}</td>
-              <td data-label="Amount">{{lottory.round_no}}</td>
-              <td data-label="Period">{{lottory.set_no}}</td>
-              <td data-label="Period">{{lottory.price}}</td>
-              <td data-label="Period">{{lottory.amount}}</td>
-              <td data-label="Period">{{lottory.date_lot}}</td>
+              <td data-label="Account">{{ lottory.lot_id }}</td>
+              <td data-label="Due Date">{{ lottory.ticket_id }}</td>
+              <td data-label="Amount">{{ lottory.round_no }}</td>
+              <td data-label="Period">{{ lottory.set_no }}</td>
+              <td data-label="Period">{{ lottory.price }}</td>
+              <td data-label="Period">{{ lottory.amount }}</td>
+              <td data-label="Period">{{ lottory.date_lot }}</td>
               <td data-label="Account">
-                <button class="btn btn-primary"
-                  style="padding: 5px; width: 100px;"
-                  (click)="openDialog_edit(lottory.lot_id , lottory.ticket_id, lottory.round_no ,lottory.set_no, lottory.price, lottory.amount, lottory.date_lot)">แก้ไข</button>
+                <button
+                  class="btn btn-primary"
+                  style="padding: 5px; width: 100px"
+                  (click)="
+                    openDialog_edit(
+                      lottory.lot_id,
+                      lottory.ticket_id,
+                      lottory.round_no,
+                      lottory.set_no,
+                      lottory.price,
+                      lottory.amount,
+                      lottory.date_lot
+                    )
+                  "
+                >
+                  แก้ไข
+                </button>
               </td>
-              <td data-label="Account"><button class="btn btn-danger"
-                  style="padding: 5px; margin-left: 5px; width: 100px;" (click)="removelottory(lottory.lot_id)">ลบ</button></td>
-              <!-- <td data-label="Period">{{lottory.date_lot}}</td> -->
+              <td data-label="Account">
+                <button
+                  class="btn btn-danger"
+                  style="padding: 5px; margin-left: 5px; width: 100px"
+                  (click)="removelottory(lottory.lot_id)"
+                >
+                  ลบ
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -143,19 +128,6 @@
         <div class="pagination">
           <button class="btn btn-primary" (click)="prevPage()">Previous</button>
           <button class="btn btn-primary" (click)="nextPage()">Next</button>
-        </div>
-
-        <!-- <div class="pagination">
-          <button
-            *ngFor="let page of getPages()"
-            [class.active]="page === currentPage"
-            (click)="onPageChange(page)">
-            {{ page }}
-          </button>
-        </div> -->
-
-        <div>
-          <a href="#">Show All</a>
         </div>
       </div>
     </main>
@@ -169,54 +141,14 @@
         </button>
         <div class="profile">
           <div class="info">
-            <p>Hey, <b>{{ userData.fname }} {{ userData.lname }}</b></p>
+            <p>
+              Hey, <b>{{ userData.fname }} {{ userData.lname }}</b>
+            </p>
             <small class="text-muted">Admin</small>
           </div>
-          <!-- <div class="profile-photo">
-                      <span class="material-symbols-outlined">
-                          person
-                      </span>
-                  </div> -->
         </div>
       </div>
-
       <!-------------------------- END OF TOP -------------------------->
-
-      <!-- <div class="recent-updates">
-        <h2>Recent Updates</h2>
-        <div class="updates">
-          <div class="update">
-            <span class="material-symbols-outlined"> person </span>
-            <div class="message">
-              <p>
-                <b>Mike Tyson</b> receivaed his order of Night lion tect GPS
-                drone.
-              </p>
-              <small class="text-muted">2 Minutes Ago</small>
-            </div>
-          </div>
-          <div class="update">
-            <span class="material-symbols-outlined"> person </span>
-            <div class="message">
-              <p>
-                <b>Mike Tyson</b> receivaed his order of Night lion tect GPS
-                drone.
-              </p>
-              <small class="text-muted">2 Minutes Ago</small>
-            </div>
-          </div>
-          <div class="update">
-            <span class="material-symbols-outlined"> person </span>
-            <div class="message">
-              <p>
-                <b>Mike Tyson</b> receivaed his order of Night lion tect GPS
-                drone.
-              </p>
-              <small class="text-muted">2 Minutes Ago</small>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 </body>

@@ -77,6 +77,7 @@ export class BuyTricketComponent {
     amount: any
   ) {
     const ac_id = this.dataService.getAcId();
+
     if (ac_id !== null && ac_id !== undefined) {
       this.dialog.open(AddtricketComponent, {
         width: '500px',

@@ -25,10 +25,10 @@
           margin-top: 25px;
         "
       >
-        รายละเอียดการสั่งซื้อ
-      </p>
-      <button routerLink="/order_history" class="btn btn-primary">
         ประวัติการสั่งซื้อ
+      </p>
+      <button routerLink="/report_detail" class="btn btn-danger">
+        รายละเอียดการสั่งซื้อ
       </button>
       <hr />
       <div class="box-search">
@@ -41,6 +41,7 @@
                 maxlength="1"
                 name="num_1"
                 type="text"
+                [(ngModel)]="num_1"
                 placeholder="1"
               />
               <input
@@ -49,6 +50,7 @@
                 maxlength="1"
                 name="num_2"
                 type="text"
+                [(ngModel)]="num_2"
                 placeholder="2"
               />
               <input
@@ -57,6 +59,7 @@
                 maxlength="1"
                 name="num_3"
                 type="text"
+                [(ngModel)]="num_3"
                 placeholder="3"
               />
               <input
@@ -64,6 +67,7 @@
                 minlength="1"
                 maxlength="1"
                 name="num_4"
+                [(ngModel)]="num_4"
                 type="text"
                 placeholder="4"
               />
@@ -71,6 +75,7 @@
                 class="form-control input_num_search"
                 minlength="1"
                 maxlength="1"
+                [(ngModel)]="num_5"
                 name="num_5"
                 type="text"
                 placeholder="5"
@@ -80,6 +85,7 @@
                 minlength="1"
                 maxlength="1"
                 name="num_6"
+                [(ngModel)]="num_6"
                 type="text"
                 placeholder="6"
               />
@@ -87,34 +93,41 @@
           </div>
 
           <div class="box-input-2">
-            ชุดที่ :
-
-            <!-------------------------------------------------------------------->
-            <select>
-              <option disabled>เลือกชุดสลาก</option>
-              <option></option>
-            </select>
-          </div>
-          <!-------------------------------------------------------------------->
-          <div class="box-input-3">
-            งวดที่
-            <select>
-              <option disabled>เลือกชุดสลาก</option>
-              <option></option>
-            </select>
+            วันที่สั่งซื้อ :
+            <input
+              type="date"
+              [(ngModel)]="selectedDate"
+              (change)="searchByDate()"
+            />
           </div>
         </div>
         <div class="box-input">
           <div class="box-input-4">
-            <button class="btn_search">ค้นหาเลขเด็ด</button>
+            <button class="btn_search" (click)="searchTicket()">
+              ค้นหาการสั่งซื้อ
+            </button>
           </div>
           <div class="box-input-5">
-            <button class="btn_reset" type="reset">เคลียร์</button>
+            <button class="btn_reset" type="reset" (click)="resetForm()">
+              เคลียร์
+            </button>
           </div>
         </div>
       </div>
+
       <hr />
-      <table>
+      <table
+        *ngIf="
+          searchedLottory.length === 0 &&
+          !num_1 &&
+          !num_2 &&
+          !num_3 &&
+          !num_4 &&
+          !num_5 &&
+          !num_6 &&
+          !selectedDate
+        "
+      >
         <thead>
           <tr>
             <th scope="col">วันที่สั่งซื้อ</th>
@@ -127,17 +140,67 @@
         </thead>
         <tbody>
           <tr *ngFor="let lottoryhistory of lottoryhistory">
-            <td data-label="Due Date">{{ lottoryhistory.buy_date }}</td>
-            <td data-label="Name">
+            <td data-label="ID">{{ lottoryhistory.buy_date }}</td>
+            <td data-label="Lottory">
               {{ lottoryhistory.fname }} {{ lottoryhistory.lname }}
             </td>
             <td data-label="Lottory">{{ lottoryhistory.ticket_id }}</td>
-            <td data-label="Price">{{ lottoryhistory.price }}</td>
             <td data-label="Amount">{{ lottoryhistory.amount }}</td>
+            <td data-label="Price">{{ lottoryhistory.price }}</td>
             <td data-label="Total">{{ lottoryhistory.total_price }}</td>
           </tr>
         </tbody>
       </table>
+
+      <table *ngIf="searchedLottory.length > 0">
+        <thead>
+          <tr>
+            <th scope="col">วันที่สั่งซื้อ</th>
+            <th scope="col">ชื่อ-นามสกุลผู้สั่งซื้อ</th>
+            <th scope="col">หมายเลขสลาก</th>
+            <th scope="col">ราคา / ใบ</th>
+            <th scope="col">จำนวน</th>
+            <th scope="col">ราคารวม</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of searchedLottory">
+            <td data-label="วันที่สั่งซื้อ">{{ order.buy_date }}</td>
+            <td data-label="ชื่อ-นามสกุลผู้สั่งซื้อ">
+              {{ order.fname }} {{ order.lname }}
+            </td>
+            <td data-label="หมายเลขสลาก">{{ order.ticket_id }}</td>
+            <td data-label="ราคา / ใบ">{{ order.price }}</td>
+            <td data-label="จำนวน">{{ order.amount }}</td>
+            <td data-label="ราคารวม">{{ order.total_price }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- <table *ngIf="dayData.length > 0">
+        <thead>
+          <tr>
+            <th scope="col">วันที่สั่งซื้อ</th>
+            <th scope="col">ชื่อ-นามสกุลผู้สั่งซื้อ</th>
+            <th scope="col">หมายเลขสลาก</th>
+            <th scope="col">ราคา / ใบ</th>
+            <th scope="col">จำนวน</th>
+            <th scope="col">ราคารวม</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of dayData">
+            <td data-label="วันที่สั่งซื้อ">{{ order.buy_date }}</td>
+            <td data-label="ชื่อ-นามสกุลผู้สั่งซื้อ">
+              {{ order.fname }} {{ order.lname }}
+            </td>
+            <td data-label="หมายเลขสลาก">{{ order.ticket_id }}</td>
+            <td data-label="ราคา / ใบ">{{ order.amount }}</td>
+            <td data-label="จำนวน">{{ order.price }}</td>
+            <td data-label="ราคารวม">{{ order.total_price }}</td>
+          </tr>
+        </tbody>
+      </table> -->
     </div>
   </div>
 </div>

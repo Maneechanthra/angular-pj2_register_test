@@ -28,7 +28,7 @@
         </a>
         <a routerLink="/report_ticket">
           <!-- <span class="material-symbols-outlined">grid_view</span> -->
-          <h3>รายงานจำนวนสลาก</h3>
+          <h3>รายงานรายละเอียดหมายเลขสลาก</h3>
         </a>
         <a routerLink="/report_buyticket">
           <!-- <span class="material-symbols-outlined">grid_view</span> -->
@@ -62,7 +62,7 @@
           <span></span>
           <div class="middle">
             <div class="left">
-              <h3>จำนวนสลากทั้งหมด</h3>
+              <h3>จำนวนหมายเลขสลากทั้งหมด</h3>
               <h1>{{ lottory.length }} ใบ</h1>
             </div>
           </div>
@@ -115,11 +115,10 @@
               <td colspan="2"></td>
               <td data-label="Amount">ราคารวม</td>
               <td data-label="Amount">{{ total_price_sum_day }}</td>
-              <td></td>
             </tr>
           </tfoot>
         </table>
-        <a href="#">Show All</a>
+
         <h2>รายงานข้อมูลการซื้อประจำเดือน</h2>
         <div>
           <label>กรุณาเลือกเดือน : </label>
@@ -148,7 +147,6 @@
               <th scope="col">หมายเลขสลาก</th>
               <th scope="col">จำนวน</th>
               <th scope="col">ราคารวม</th>
-              <th scope="col">ราคารวมทั้งหมด</th>
             </tr>
           </thead>
           <tbody>
@@ -159,8 +157,6 @@
               <td data-label="Ticket Id">{{ month.ticket_id }}</td>
               <td data-label="Amount">{{ month.amount }}</td>
               <td data-label="Total">{{ month.total_price }}</td>
-              <td data-label="Total Price Sum">{{ month.totalPriceSum }}</td>
-              <!-- แสดงผลรวมในคอลัมน์ใหม่ -->
             </tr>
           </tbody>
           <tfoot>
@@ -168,7 +164,6 @@
               <td colspan="2"></td>
               <td data-label="Amount">ราคารวม</td>
               <td data-label="Amount">{{ total_price_sum }}</td>
-              <td></td>
             </tr>
           </tfoot>
         </table>
